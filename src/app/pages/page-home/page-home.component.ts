@@ -9,6 +9,7 @@ import { PlantsService } from 'src/app/services/plants.service';
 })
 export class PageHomeComponent implements OnInit {
   plantsToDisplay: Plant[] = [];
+  title = 'Pokedex des plantes';
 
   constructor(private plantsService: PlantsService) {}
 
