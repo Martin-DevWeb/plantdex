@@ -10,6 +10,8 @@ import { PageMyPlantsComponent } from './pages/page-my-plants/page-my-plants.com
 import { PageAdminComponent } from './pages/page-admin/page-admin.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { CardPlantComponent } from './components/card-plant/card-plant.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SortButtonsComponent } from './components/sort-buttons/sort-buttons.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { CardPlantComponent } from './components/card-plant/card-plant.component
     PageAdminComponent,
     PageNotFoundComponent,
     CardPlantComponent,
+    SearchBarComponent,
+    SortButtonsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
