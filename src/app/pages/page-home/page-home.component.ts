@@ -9,8 +9,10 @@ import { PlantsService } from 'src/app/services/plants.service';
 })
 export class PageHomeComponent implements OnInit {
   plantsToDisplay: Plant[] = [];
+  orderBy: 'none' | 'asc' | 'desc' = 'none';
   allPlants: Plant[] = [];
-  categories: string[] = [];
+
+  categoriesToSend: string[] = [];
 
   constructor(private plantsService: PlantsService) {}
 
@@ -18,8 +20,7 @@ export class PageHomeComponent implements OnInit {
     this.plantsService.getPlants().subscribe((data) => {
       this.plantsToDisplay = [...data];
       this.allPlants = [...data];
-      this.categories = this.getCategoriesFromPlants(this.allPlants);
-      console.log(this.categories);
+      this.categoriesToSend = this.getCategoriesFromPlants(this.allPlants);
     });
   }
 
@@ -33,19 +34,15 @@ export class PageHomeComponent implements OnInit {
     }
   }
 
-  alphaSort() {
-    this.plantsToDisplay.sort(function (a, b) {
-      if (a.nom < b.nom) {
-        return -1;
-      }
-      if (a.nom > b.nom) {
-        return 1;
-      }
-      return 0;
-    });
-  }
-
   getCategoriesFromPlants(plants: Plant[]): string[] {
     return [...new Set(plants.map((plant) => plant.categorie))];
   }
+
+  getCategories(categories: string[]) {
+    this.plantsToDisplay = this.allPlants.filter((plant) =>
+      categories.includes(plant.categorie)
+    );
+  }
+
+  genericSearch() {}
 }

@@ -1,10 +1,18 @@
-<div class="container">
-  <app-search-bar (input)="searchValue($event)"></app-search-bar>
-  <app-sort-buttons (alpha)="alphaSort()"></app-sort-buttons>
-  <div class="container-plants">
-    <app-card-plant
-      *ngFor="let plantData of plantsToDisplay"
-      [plant]="plantData"
-    ></app-card-plant>
+<div class="d-flex">
+  <app-filter-side-bar
+    (categoriesToEmit)="getCategories($event)"
+    [categoriesToDisplay]="categoriesToSend"
+  ></app-filter-side-bar>
+  <div class="container-page-home">
+    <app-search-bar (input)="searchValue($event)"></app-search-bar>
+    <app-sort-buttons
+      (alpha)="orderBy = orderBy === 'asc' ? 'desc' : 'asc'"
+    ></app-sort-buttons>
+    <div class="container-plants p-2">
+      <app-card-plant
+        *ngFor="let plantData of plantsToDisplay | orderBy : orderBy"
+        [plant]="plantData"
+      ></app-card-plant>
+    </div>
   </div>
 </div>

@@ -1,10 +1,12 @@
-Trier par :
-<button
-  class="btn btn-outline-success"
-  value="sort()"
-  (click)="emitSort($event)"
->
-  Ordre Alphabétique
-</button>
-<button class="btn btn-outline-primary">Quantité Arrosage</button>
-<button class="btn btn-outline-warning">Quandtité Ensoleillement</button>
+<div class="buttons-bar">
+  Trier par :
+  <button [ngClass]="statusAscClass" (click)="emitSort($event)">
+    Ordre Alpha <i [ngClass]="arrowIcon"></i>
+  </button>
+  <button [ngClass]="statusWaterClass" (click)="emitWater($event)">
+    Arrosage <i [ngClass]="waterIcon"></i>
+  </button>
+  <button [ngClass]="statusSunClass" (click)="emitSun($event)">
+    Ensoleillement <i [ngClass]="sunIcon"></i>
+  </button>
+</div>

@@ -1,4 +1,10 @@
+.buttons-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
 button {
-  margin: 15px;
-  margin-top: 0;
+  margin-left: 15px;
 }

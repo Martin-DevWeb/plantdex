@@ -2,8 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: space-between;
-  align-content: space-around;
   align-items: center;
+}
+
+.container-page-home {
+  margin: 15px;
 }
