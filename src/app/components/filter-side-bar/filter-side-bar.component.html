@@ -4,7 +4,7 @@
   </div>
   <hr />
   <div class="px-3">
-    <p class="fs-5 fw-semibold">Catégorie</p>
+    <p class="fs-5 fw-semibold">Catégories</p>
     <div class="form-check" *ngFor="let category of categoriesToDisplay">
       <input
         class="form-check-input"
@@ -16,6 +16,55 @@
       <label class="form-check-label" for="{{ category }}">
         {{ category }}
       </label>
+    </div>
+  </div>
+  <hr />
+  <div class="px-3">
+    <p class="fs-5 fw-semibold">Arrosage</p>
+    <div class="form-check" *ngFor="let water of waterToDisplay">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        value="{{ water }}"
+        id="{{ water }}"
+        (change)="onCheckedWater($event)"
+      />
+      <label
+        for="form-check-label"
+        for="{{ water }}"
+        *ngFor="let drop of dropIcon; index as i"
+        ><i
+          *ngIf="i >= water"
+          class="fa-solid fa-droplet-slash text-primary"
+        ></i
+        ><i *ngIf="i < water" class="fa-solid fa-droplet text-primary"></i
+      ></label>
+    </div>
+  </div>
+  <hr />
+  <div class="px-3">
+    <p class="fs-5 fw-semibold">Ensoleillement</p>
+    <div class="form-check" *ngFor="let sun of sunToDisplay">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        value="{{ sun }}"
+        id="{{ sun }}"
+        (change)="onCheckedSun($event)"
+      />
+      <label
+        for="{{ sun }}"
+        class="form-check-label"
+        *ngFor="let sunny of sunIcon; index as i"
+        ><i
+          *ngIf="i > sunToDisplay.indexOf(sun)"
+          class="fa-regular fa-sun text-warning"
+        ></i
+        ><i
+          *ngIf="i <= sunToDisplay.indexOf(sun)"
+          class="fa-solid fa-sun text-warning"
+        ></i
+      ></label>
     </div>
   </div>
 </div>

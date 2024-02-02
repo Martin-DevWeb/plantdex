@@ -1,16 +1,27 @@
 <div class="d-flex">
   <app-filter-side-bar
     (categoriesToEmit)="getCategories($event)"
+    (waterToEmit)="getWater($event)"
+    (sunToEmit)="getSun($event)"
     [categoriesToDisplay]="categoriesToSend"
+    [waterToDisplay]="waterToSend"
+    [sunToDisplay]="sunToSend"
   ></app-filter-side-bar>
   <div class="container-page-home">
-    <app-search-bar (input)="searchValue($event)"></app-search-bar>
+    <app-search-bar (inputVal)="searchValue($event)"></app-search-bar>
     <app-sort-buttons
       (alpha)="orderBy = orderBy === 'asc' ? 'desc' : 'asc'"
+      (water)="orderByWater = orderByWater === 'asc' ? 'desc' : 'asc'"
+      (sun)="orderBySun = orderBySun === 'asc' ? 'desc' : 'asc'"
     ></app-sort-buttons>
     <div class="container-plants p-2">
       <app-card-plant
-        *ngFor="let plantData of plantsToDisplay | orderBy : orderBy"
+        *ngFor="
+          let plantData of plantsToDisplay
+            | orderBy : orderBy
+            | orderByWater : orderByWater
+            | orderBySun : orderBySun
+        "
         [plant]="plantData"
       ></app-card-plant>
     </div>

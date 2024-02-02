@@ -14,6 +14,8 @@ import { CardPlantComponent } from './components/card-plant/card-plant.component
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SortButtonsComponent } from './components/sort-buttons/sort-buttons.component';
 import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
+import { OrderByWaterPipe } from './pipes/order-by-water.pipe';
+import { OrderBySunPipe } from './pipes/order-by-sun.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FilterSideBarComponent } from './components/filter-side-bar/filter-side
     SortButtonsComponent,
     FilterSideBarComponent,
     OrderByPipe,
+    OrderByWaterPipe,
+    OrderBySunPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

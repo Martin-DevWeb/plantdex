@@ -10,7 +10,7 @@ export class CardPlantComponent {
   @Input() plant!: Plant;
 
   water(number: number): string {
-    if (this.plant.arrosage >= 0 && number === 1) {
+    if (this.plant.arrosage >= 1 && number === 1) {
       return 'fa-solid fa-droplet';
     }
     if (this.plant.arrosage >= 2 && number === 2) {

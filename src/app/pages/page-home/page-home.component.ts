@@ -9,10 +9,19 @@ import { PlantsService } from 'src/app/services/plants.service';
 })
 export class PageHomeComponent implements OnInit {
   plantsToDisplay: Plant[] = [];
-  orderBy: 'none' | 'asc' | 'desc' = 'none';
   allPlants: Plant[] = [];
+  orderBy: 'none' | 'asc' | 'desc' = 'none';
+  orderByWater: 'none' | 'asc' | 'desc' = 'none';
+  orderBySun: 'none' | 'asc' | 'desc' = 'none';
 
   categoriesToSend: string[] = [];
+  waterToSend: number[] = [];
+  sunToSend: string[] = [];
+
+  searchText: string = '';
+  selectedCategory: string[] = [];
+  selectedWater: number[] = [];
+  selectedSun: string[] = [];
 
   constructor(private plantsService: PlantsService) {}
 
@@ -20,29 +29,72 @@ export class PageHomeComponent implements OnInit {
     this.plantsService.getPlants().subscribe((data) => {
       this.plantsToDisplay = [...data];
       this.allPlants = [...data];
-      this.categoriesToSend = this.getCategoriesFromPlants(this.allPlants);
+      this.categoriesToSend = this.getCategoriesFromPlants(data);
+      this.waterToSend = this.getWaterFromPlants(data);
+      this.sunToSend = this.getSunFromPlants(data);
     });
   }
 
   searchValue(value: string) {
-    if (value == null || value == '') {
-      this.plantsToDisplay = this.allPlants;
-    } else {
-      this.plantsToDisplay = this.allPlants.filter((plant) =>
-        plant.nom.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-      );
-    }
+    this.searchText = value;
+    this.genericSearch();
   }
 
   getCategoriesFromPlants(plants: Plant[]): string[] {
-    return [...new Set(plants.map((plant) => plant.categorie))];
+    return [...new Set(plants.map((plant) => plant.categorie))].sort();
   }
 
-  getCategories(categories: string[]) {
-    this.plantsToDisplay = this.allPlants.filter((plant) =>
-      categories.includes(plant.categorie)
+  getWaterFromPlants(plants: Plant[]) {
+    return [...new Set(plants.map((plant) => plant.arrosage))].sort();
+  }
+
+  getSunFromPlants(plants: Plant[]) {
+    return [...new Set(plants.map((plant) => plant.soleil))].sort(
+      (a, b) => a.length - b.length
     );
   }
 
-  genericSearch() {}
+  getCategories(categories: string[]) {
+    this.selectedCategory = categories;
+    this.genericSearch();
+  }
+
+  getWater(water: number[]) {
+    this.selectedWater = water;
+    this.genericSearch();
+  }
+
+  getSun(sun: string[]) {
+    this.selectedSun = sun;
+    this.genericSearch();
+  }
+
+  genericSearch() {
+    const filteredPlantsByCat = this.allPlants.filter(
+      (plant) =>
+        this.selectedCategory.length === 0 ||
+        this.selectedCategory.includes(plant.categorie)
+    );
+    const filteredPlantsByWater = filteredPlantsByCat.filter(
+      (plant) =>
+        this.selectedWater.length === 0 ||
+        this.selectedWater.includes(plant.arrosage)
+    );
+    const filteredPlantsBySun = filteredPlantsByWater.filter(
+      (plant) =>
+        this.selectedSun.length === 0 || this.selectedSun.includes(plant.soleil)
+    );
+    this.plantsToDisplay = filteredPlantsBySun.filter((plant) =>
+      plant.nom
+        .toLocaleLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .includes(
+          this.searchText
+            .toLocaleLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+        )
+    );
+  }
 }

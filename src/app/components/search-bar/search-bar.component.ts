@@ -6,9 +6,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent {
-  @Output() input = new EventEmitter<string>();
+  @Output() inputVal = new EventEmitter<string>();
 
-  inputValue(input: any) {
-    this.input.emit(input.target.value);
+  inputValue(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.inputVal.emit(value);
   }
 }
