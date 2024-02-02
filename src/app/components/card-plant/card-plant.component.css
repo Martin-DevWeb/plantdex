@@ -2,3 +2,14 @@ i {
   width: 20px;
   text-align: center;
 }
+
+.container-img-plant {
+  /* width: 286px; */
+  height: 286px;
+  text-align: center;
+}
+
+img {
+  max-height: 100%;
+  width: auto;
+}
