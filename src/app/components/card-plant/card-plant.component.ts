@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Plant } from 'src/app/models/plant';
+import { IconsComponent } from '../icons/icons.component';
 
 @Component({
   selector: 'app-card-plant',
@@ -9,16 +10,18 @@ import { Plant } from 'src/app/models/plant';
 export class CardPlantComponent {
   @Input() plant!: Plant;
 
+  iconSpec: string = '';
+
   water(number: number): string {
     if (this.plant.arrosage >= 1 && number === 1) {
-      return 'fa-solid fa-droplet';
+      return (this.iconSpec = 'fa-solid fa-droplet');
     }
     if (this.plant.arrosage >= 2 && number === 2) {
-      return 'fa-solid fa-droplet';
+      return (this.iconSpec = 'fa-solid fa-droplet');
     }
     if (this.plant.arrosage === 3 && number === 3) {
       return 'fa-solid fa-droplet';
-    } else return 'fa-solid fa-droplet-slash';
+    } else return (this.iconSpec = 'fa-solid fa-droplet-slash');
   }
 
   sun(number: number): string {

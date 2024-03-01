@@ -1,4 +1,30 @@
 {
+  "categories": [
+    {
+      "label": "plantes fleuries",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "label": "orchidés"
+    },
+    {
+      "id": 3,
+      "label": "cactus et plantes grasses"
+    },
+    {
+      "id": 4,
+      "label": "bonsaïs"
+    },
+    {
+      "id": 5,
+      "label": "plantes vertes"
+    },
+    {
+      "id": 6,
+      "label": "palmiers d'intérieur"
+    }
+  ],
   "plants": [
     {
       "id": 952438,

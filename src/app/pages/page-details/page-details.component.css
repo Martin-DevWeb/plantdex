@@ -1,10 +1,10 @@
 .thumbnail {
-  width: 75px;
+  width: 200px;
   height: auto;
   transition: all 0.2s ease-in-out;
 
   &:hover {
     cursor: zoom-in;
-    transform: scale(3);
+    transform: scale(2);
   }
 }

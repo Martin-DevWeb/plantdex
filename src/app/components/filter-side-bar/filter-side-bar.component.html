@@ -21,7 +21,7 @@
   <hr />
   <div class="px-3">
     <p class="fs-5 fw-semibold">Arrosage</p>
-    <div class="form-check" *ngFor="let water of waterToDisplay">
+    <div class="form-check water" *ngFor="let water of waterToDisplay">
       <input
         type="checkbox"
         class="form-check-input"
@@ -33,18 +33,21 @@
         for="form-check-label"
         for="{{ water }}"
         *ngFor="let drop of dropIcon; index as i"
-        ><i
+        ><app-icons
           *ngIf="i >= water"
           class="fa-solid fa-droplet-slash text-primary"
-        ></i
-        ><i *ngIf="i < water" class="fa-solid fa-droplet text-primary"></i
+        ></app-icons
+        ><app-icons
+          *ngIf="i < water"
+          class="fa-solid fa-droplet text-primary"
+        ></app-icons
       ></label>
     </div>
   </div>
   <hr />
   <div class="px-3">
     <p class="fs-5 fw-semibold">Ensoleillement</p>
-    <div class="form-check" *ngFor="let sun of sunToDisplay">
+    <div class="form-check sun text-warning" *ngFor="let sun of sunToDisplay">
       <input
         type="checkbox"
         class="form-check-input"
@@ -56,14 +59,14 @@
         for="{{ sun }}"
         class="form-check-label"
         *ngFor="let sunny of sunIcon; index as i"
-        ><i
+        ><app-icons
           *ngIf="i > sunToDisplay.indexOf(sun)"
-          class="fa-regular fa-sun text-warning"
-        ></i
-        ><i
+          class="fa-regular fa-sun"
+        ></app-icons
+        ><app-icons
           *ngIf="i <= sunToDisplay.indexOf(sun)"
-          class="fa-solid fa-sun text-warning"
-        ></i
+          class="fa-solid fa-sun"
+        ></app-icons
       ></label>
     </div>
   </div>

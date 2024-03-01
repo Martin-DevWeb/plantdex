@@ -1,0 +1,107 @@
+<div class="container">
+  <form
+    class="card p-5 m-5"
+    [formGroup]="plantForm"
+    (ngSubmit)="onSubmitForm()"
+  >
+    <h3>Veuillez remplir les détails de la plante à ajouter</h3>
+
+    <label class="form-label" for="nom">Nom :</label>
+    <input
+      class="form-control"
+      id="nom"
+      type="text"
+      formControlName="nom"
+      [ngClass]="{
+        'is-invalid':
+          plantForm.controls['nom'].touched && plantForm.controls['nom'].invalid
+      }"
+      aria-labelledby="invalid-feedback-input-name"
+    />
+    <span class="invalid-feedback" id="invalid-feedback-input-name"
+      >Ce champ est requis</span
+    >
+
+    <label class="form-label mt-3" for="sun-select"
+      >Choisir une préférence d'ensoleillement :</label
+    >
+
+    <select
+      class="form-check"
+      name="soleil"
+      id="sun-select"
+      formControlName="soleil"
+    >
+      <option disabled value="" class="text-center">
+        --Sélectionnez une option--
+      </option>
+      <option value="peu">Peu</option>
+      <option value="moyen">Moyen</option>
+      <option value="beaucoup">Beaucoup</option>
+    </select>
+
+    <label class="form-label mt-3" for="water-select"
+      >Choisir une préférence d'arrosage :</label
+    >
+
+    <select
+      class="form-check"
+      name="arrosage"
+      id="water-select"
+      formControlName="arrosage"
+    >
+      <option disabled value="" class="text-center">
+        --Sélectionnez une option--
+      </option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <label for="categorie" class="form-label mt-3"
+      >Choisir une catégorie :</label
+    >
+    <select
+      name="categorie"
+      id="categorie"
+      class="form-check"
+      formControlName="categorie"
+    >
+      <option disabled value="" class="text-center">
+        --Si vous voulez ajouter une catégorie, veuillez vous rendre sur la page
+        dédiée--
+      </option>
+      <option disabled value="" class="text-center">
+        --Sélectionnez une option--
+      </option>
+      <option *ngFor="let cat of allCat" value="{{ cat.label }}">
+        {{ cat.label }}
+      </option>
+    </select>
+
+    <label for="image" class="form-label mt-3"
+      >Renseigner une URL pour l'image :</label
+    >
+    <input
+      class="form-control"
+      id="image"
+      type="text"
+      formControlName="image"
+    />
+
+    <button
+      class="btn btn-secondary mt-5 w-25"
+      type="submit"
+      [disabled]="plantForm.invalid"
+    >
+      <span *ngIf="plantToUpdate === undefined">Créer la plante</span
+      ><span *ngIf="plantToUpdate !== undefined">Mettre à jour</span>
+    </button>
+  </form>
+</div>
+<div class="text-end">
+  <button class="btn btn-info" routerLink="/admin">
+    Retourner à la page admin
+  </button>
+</div>

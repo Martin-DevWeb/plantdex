@@ -5,7 +5,7 @@ import { Plant } from '../models/plant';
   name: 'orderBy',
 })
 export class OrderByPipe implements PipeTransform {
-  transform(value: Plant[], order: 'none' | 'asc' | 'desc' = 'none'): Plant[] {
+  transform(value: Plant[], order: 'none' | 'asc' | 'desc' = 'none') {
     return value.sort((a, b) => {
       if (order === 'none') {
         return 0;

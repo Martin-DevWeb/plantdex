@@ -1,0 +1,9 @@
+<h1 class="text-center m-3">Modification d'une catégorie</h1>
+
+<div class="d-flex justify-content-around">
+  <app-form-categorie
+    *ngIf="catToUpdate"
+    [catToUpdate]="catToUpdate"
+    (submitFormCat)="updateCategorie($event)"
+  ></app-form-categorie>
+</div>

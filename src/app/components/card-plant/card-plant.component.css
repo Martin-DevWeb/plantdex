@@ -4,12 +4,10 @@ i {
 }
 
 .container-img-plant {
-  /* width: 286px; */
-  height: 286px;
   text-align: center;
 }
 
-img {
-  max-height: 100%;
+.container-img-plant img {
+  height: 286px;
   width: auto;
 }

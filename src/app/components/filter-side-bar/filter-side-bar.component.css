@@ -10,7 +10,9 @@
   }
 }
 
-i {
+.water label,
+.sun label {
+  height: auto;
   width: 20px;
   text-align: center;
 }

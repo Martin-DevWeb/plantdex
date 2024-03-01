@@ -23,6 +23,9 @@ export class PageHomeComponent implements OnInit {
   selectedWater: number[] = [];
   selectedSun: string[] = [];
 
+  type: string = 'arrosage';
+  orderReset: string = 'asc';
+
   constructor(private plantsService: PlantsService) {}
 
   ngOnInit(): void {

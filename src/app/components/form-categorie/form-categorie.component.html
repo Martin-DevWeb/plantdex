@@ -1,0 +1,39 @@
+<div class="container">
+  <form
+    class="card p-5 m-5"
+    [formGroup]="categorieForm"
+    (ngSubmit)="onSubmitForm()"
+  >
+    <h3>Veuillez remplir le nom de la catégorie à ajouter</h3>
+
+    <label class="form-label" for="label">Label :</label>
+    <input
+      class="form-control"
+      id="label"
+      type="text"
+      formControlName="label"
+      [ngClass]="{
+        'is-invalid':
+          categorieForm.controls['label'].touched &&
+          categorieForm.controls['label'].invalid
+      }"
+      aria-labelledby="invalid-feedback-input-name"
+    />
+    <span class="invalid-feedback" id="invalid-feedback-input-name"
+      >Ce champ est requis</span
+    >
+    <button
+      class="btn btn-secondary mt-5 w-25"
+      type="submit"
+      [disabled]="categorieForm.invalid"
+    >
+      <span *ngIf="catToUpdate === undefined">Créer la catégorie</span
+      ><span *ngIf="catToUpdate !== undefined">Mettre à jour</span>
+    </button>
+  </form>
+  <div class="text-end">
+    <button class="btn btn-info" routerLink="/admin">
+      Retourner à la page admin
+    </button>
+  </div>
+</div>

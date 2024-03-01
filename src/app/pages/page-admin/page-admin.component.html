@@ -1,1 +1,87 @@
-<p>page-admin works!</p>
+<h1 class="text-center m-3">Page Admin PlantDex</h1>
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h1>Catégories</h1>
+    <button class="btn btn-success m-3 float-end" routerLink="add-categorie">
+      Ajouter une catégorie
+    </button>
+  </div>
+  <table class="table table-sm table-hover table-bordered align-middle mb-5">
+    <thead>
+      <th class="p-3">Label</th>
+      <th class="p-3 text-end">Requêtes</th>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let catData of allCat">
+        <td>{{ catData.label }}</td>
+        <td class="text-end">
+          <button
+            class="btn btn-warning m-1"
+            title="éditer"
+            routerLink="update/categorie/{{ catData.id }}"
+          >
+            <app-icons [iconName]="'bi bi-pencil'"></app-icons>
+          </button>
+          <button
+            class="btn btn-danger m-1"
+            title="supprimer"
+            (click)="removeCategorie(catData.id)"
+          >
+            <app-icons [iconName]="'bi bi-trash'"></app-icons>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between">
+    <h1>Plantes</h1>
+    <button class="btn btn-success m-3 float-end" routerLink="add-plant">
+      Ajouter une plante
+    </button>
+  </div>
+  <table class="table table-sm table-hover table-bordered align-middle mb-5">
+    <thead>
+      <th class="p-3">Nom</th>
+      <th class="p-3">Ensoleillement</th>
+      <th class="p-3">Arrosage</th>
+      <th class="p-3">Catégorie</th>
+      <th class="p-3">Image URL</th>
+      <th class="p-3 text-end">Requêtes</th>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let plantData of allPlants">
+        <td>{{ plantData.nom }}</td>
+        <td>{{ plantData.soleil }}</td>
+        <td>{{ plantData.arrosage }}</td>
+        <td>{{ plantData.categorie }}</td>
+        <td>
+          <img
+            src="{{ plantData.image }}"
+            alt="image of the plant"
+            class="img-thumbnail thumbnail"
+          />
+        </td>
+        <td class="text-end">
+          <button
+            class="btn btn-warning m-1"
+            title="éditer"
+            routerLink="update/plant/{{ plantData.id }}"
+          >
+            <app-icons [iconName]="'bi bi-pencil'"></app-icons>
+          </button>
+          <button
+            class="btn btn-danger m-1"
+            title="supprimer"
+            (click)="removePlant(plantData.id)"
+          >
+            <app-icons [iconName]="'bi bi-trash'"></app-icons>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-scroll-to-top></app-scroll-to-top>

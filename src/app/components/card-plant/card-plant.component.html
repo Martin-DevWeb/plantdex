@@ -11,19 +11,29 @@
       <div class="d-flex flex-column align-items-center">
         <p class="fw-bold">Arrosage</p>
         <div class="text-primary">
-          <i class="{{ water(1) }} mx-1"></i><i class="{{ water(2) }} mx-1"></i
-          ><i class="{{ water(3) }} mx-1"></i>
+          <app-icons class="mx-1" [iconName]="water(1)"></app-icons>
+          <app-icons class="mx-1" [iconName]="water(2)"></app-icons>
+          <app-icons class="mx-1" [iconName]="water(3)"></app-icons>
         </div>
       </div>
       <div class="d-flex flex-column align-items-center">
         <p class="fw-bold">Exposition</p>
-        <div>
-          <i class="{{ sun(1) }} text-warning mx-1"></i
-          ><i class="{{ sun(2) }} text-warning mx-1"></i
-          ><i class="{{ sun(3) }} text-warning mx-1"></i>
+        <div class="text-warning">
+          <app-icons class="mx-1" [iconName]="sun(1)"></app-icons>
+          <app-icons class="mx-1" [iconName]="sun(2)"></app-icons>
+          <app-icons class="mx-1" [iconName]="sun(3)"></app-icons>
         </div>
       </div>
     </div>
-    <a href="#" class="btn btn-success">Je l'ai !</a>
+    <div class="d-flex justify-content-between">
+      <button href="#" class="btn btn-success m-1">Je l'ai !</button>
+      <button
+        class="btn btn-info m-1"
+        title="infos"
+        routerLink="details/{{ plant.id }}"
+      >
+        <app-icons [iconName]="'bi bi-card-text'"></app-icons>
+      </button>
+    </div>
   </div>
 </div>

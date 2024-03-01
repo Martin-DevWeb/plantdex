@@ -16,6 +16,16 @@ import { SortButtonsComponent } from './components/sort-buttons/sort-buttons.com
 import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
 import { OrderByWaterPipe } from './pipes/order-by-water.pipe';
 import { OrderBySunPipe } from './pipes/order-by-sun.pipe';
+import { IconsComponent } from './components/icons/icons.component';
+import { PageAddPlantComponent } from './pages/page-add-plant/page-add-plant.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormPlantComponent } from './components/form-plant/form-plant.component';
+import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
+import { FormCategorieComponent } from './components/form-categorie/form-categorie.component';
+import { PageAddCategorieComponent } from './pages/page-add-categorie/page-add-categorie.component';
+import { PageDetailsComponent } from './pages/page-details/page-details.component';
+import { PageUpdatePlantComponent } from './pages/page-update-plant/page-update-plant.component';
+import { PageUpdateCategorieComponent } from './pages/page-update-categorie/page-update-categorie.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +42,22 @@ import { OrderBySunPipe } from './pipes/order-by-sun.pipe';
     OrderByPipe,
     OrderByWaterPipe,
     OrderBySunPipe,
+    IconsComponent,
+    PageAddPlantComponent,
+    FormPlantComponent,
+    ScrollToTopComponent,
+    FormCategorieComponent,
+    PageAddCategorieComponent,
+    PageDetailsComponent,
+    PageUpdatePlantComponent,
+    PageUpdateCategorieComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
